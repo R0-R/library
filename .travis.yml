@@ -1,8 +1,5 @@
 language: java
 
-# Use Ubuntu 20.04 (Focal Fossa)
-dist: focal
-
 # Specify JDK versions to test against
 jdk:
   - openjdk11
@@ -10,17 +7,11 @@ jdk:
 # Cache Maven dependencies to speed up builds
 cache:
   directories:
-    - $HOME/.mvn/wrappers/
-
+    - $HOME/.mvn/wrapper/
 
 stages:
   - name: Building
   - name: Testing
-
-
-# Install dependencies and run tests
-#script:
- # - mvn clean install
 
 jobs:
   include:
@@ -37,12 +28,8 @@ jobs:
         - mvn test
       after_failure:
         - echo "Tests failed. Check the test results for details."
-        after_success:
+      after_success:
         - echo "Tests passed successfully."
-
-
-
-
 
 # Enable notifications via email
 notifications:
